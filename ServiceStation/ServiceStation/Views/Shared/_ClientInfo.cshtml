@@ -1,0 +1,21 @@
+﻿@model ServiceStation.Models.ServiceClient
+
+    <h3 class="well">
+        <strong>@Model.FirstName @Model.LastName</strong>
+        <span class="pull-right">@Html.ActionLink("Select", "Details", new { id = Model.ServiceClientID }, new { @class = "btn btn-primary" })</span>
+    </h3>    
+    <div>
+        <table class="table">
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.DateofBirth): @Html.DisplayFor(modelItem => Model.DateofBirth)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Phone): @Html.DisplayFor(modelItem => Model.Phone)
+                </td>
+                <td>
+                    @Html.DisplayNameFor(model => model.Email): @Html.DisplayFor(modelItem => Model.Email)
+                </td>
+            </tr>
+        </table>
+    </div>

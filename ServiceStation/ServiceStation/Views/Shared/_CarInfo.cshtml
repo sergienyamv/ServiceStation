@@ -1,0 +1,45 @@
+﻿@model ServiceStation.Models.Car
+
+
+    <h3 class="well">
+        <strong>@Model.Make - @Model.Year</strong>
+        <span class="pull-right">
+            @Html.ActionLink("Edit", "CarEdit", new { id = Model.CarID }, new { @class = "btn btn-primary" })
+            @if (Model.Orders.Count == 0)
+            {
+                @Html.ActionLink("Delete", "CarDelete", new { id = Model.CarID }, new { @class = "btn btn-danger" })
+            }
+        </span>
+
+    </h3>
+    <div>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.Model)
+                </td>
+                <td rowspan="2" colspan="2" align="right">
+                    <div>
+                        @Html.ActionLink("Add Order", "OrderCreate", new { id = Model.CarID }, new { @class = "btn btn-success" })
+                    </div>
+                </td>
+            </tr>
+           
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.VIN)
+                    </th>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.VIN)
+                    </td>
+                </tr> 
+            @if (Model.Orders.Count != 0)
+            {
+                <tr><th colspan="4">Orders:</th></tr>
+                @Html.Partial("_OrderInfo", Model.Orders)
+            }
+        </table>
+    </div>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ServiceStation.Models.ServiceClient>
+
+@{
+    ViewBag.Title = "Our Clients";
+}
+
+
+<h2>Select Client</h2>
+<p>
+    <input id="filterCars" class="txtfilterCars" type="text" name="txtRecherche">
+</p>
+<p>
+    @Html.ActionLink("Add Client", "Create", null, new { @class = "btn btn-warning" })
+</p>
+    
+<div id="accordion" class="filterMe">
+    @foreach (var item in Model)
+    {
+        @Html.Partial("_ClientInfo", item)
+    }
+</div>

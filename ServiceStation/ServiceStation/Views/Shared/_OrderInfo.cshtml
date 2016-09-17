@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ServiceStation.Models.Order>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderStatus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderAmount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderStatus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "OrderEdit", new { id = item.OrderID }) |
+            @Html.ActionLink("Delete", "OrderDelete", new { id = item.OrderID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,22 @@
+﻿@model ServiceStation.Models.ServiceClient
+
+@{
+    ViewBag.Title = Model.LastName;
+}
+
+<h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2>
+
+<div>
+    <h4>Car List</h4>
+    <hr />
+    <div id="accordion">
+        @foreach (var item in Model.Cars)
+        {
+            @Html.Partial("_CarInfo", item)
+        }
+    </div>
+    @Html.ActionLink("Add Car", "CarCreate", new { id = Model.ServiceClientID }, new { @class = "btn btn-info" })
+</div>
+<p>
+    @Html.ActionLink("Back to Clients List", "Index", null, new { @class = "btn btn-success" })
+</p>
